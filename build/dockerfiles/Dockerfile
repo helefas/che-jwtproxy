@@ -73,7 +73,7 @@ RUN apk --update --no-cache add \
     tzdata \
   && rm -rf /tmp/* /var/cache/apk/*
 
-USER appuser
+USER root
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /app/jwtproxy /usr/local/bin/jwtproxy
 ENTRYPOINT [ "/usr/local/bin/jwtproxy" ]
