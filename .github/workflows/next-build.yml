@@ -64,6 +64,8 @@ jobs:
         run: go test -v  ./...
   docker:
     runs-on: ubuntu-22.04
+    environment:
+      name: gh-action
     needs: go
     steps:
       -
