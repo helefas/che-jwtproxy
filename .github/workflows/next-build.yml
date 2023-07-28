@@ -76,8 +76,8 @@ jobs:
         id: prepare
         run: |
           QUAY_USERNAME=${{secrets.QUAY_USERNAME}}
-          IMAGE=csighub.tencentyun.com/jonahhuang/che-jwtproxy
-          REPO=csighub.tencentyun.com
+          IMAGE=quay.io/helefas/che-jwtproxy
+          REPO=quay.io
           DOCKER_PLATFORMS=linux/amd64,linux/s390x,linux/arm64,linux/ppc64le
           VERSION=next
 
