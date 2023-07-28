@@ -74,8 +74,8 @@ jobs:
         id: prepare
         run: |
           QUAY_USERNAME=${{secrets.QUAY_USERNAME}}
-          IMAGE=quay.io/eclipse/che-jwtproxy
-          REPO=quay.io
+          IMAGE=csighub.tencentyun.com/jonahhuang/che-jwtproxy
+          REPO=csighub.tencentyun.com
           DOCKER_PLATFORMS=linux/amd64,linux/s390x,linux/arm64,linux/ppc64le
           VERSION=next
 
@@ -123,11 +123,6 @@ jobs:
         if: success() && github.event_name != 'pull_request' && (endsWith(github.ref, github.event.repository.default_branch) || startsWith(github.ref, 'refs/tags/'))
         run: |
           docker buildx build --output "type=image,push=true" ${{ steps.prepare.outputs.buildx_args }}
-      -
-        name: Docker Buildx rhel (push)
-        if: success() && github.event_name != 'pull_request' && (endsWith(github.ref, github.event.repository.default_branch) || startsWith(github.ref, 'refs/tags/'))
-        run: |
-          docker buildx build --output "type=image,push=true" ${{ steps.prepare.outputs.buildx_args_rhel }}
       -
         name: Docker Check Manifest
         if: success() && github.event_name != 'pull_request' && (endsWith(github.ref, github.event.repository.default_branch) || startsWith(github.ref, 'refs/tags/'))
